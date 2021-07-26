@@ -1,17 +1,19 @@
 package jm.task.core.jdbc.dao;
 
+import jm.task.core.jdbc.model.User;
+
 import java.util.List;
 
-public interface UserDao<T> {
+public interface UserDao extends BasicDao<User> {
     void createUsersTable();
 
     void dropUsersTable();
 
-    void saveUser(T t);
+    void saveUser(User user);
 
     void removeUserById(long id);
 
-    List<T> getAllUsers();
+    List<User> getAllUsers();
 
     void cleanUsersTable();
 }

@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class UserDaoHibernateImpl implements UserDao<User> {
+public class UserDaoHibernateImpl implements UserDao {
     public UserDaoHibernateImpl() {
     }
 
@@ -43,6 +43,8 @@ public class UserDaoHibernateImpl implements UserDao<User> {
                 System.out.println("Ошибка при удалении таблицы: " + e);
                 session.getTransaction().rollback();
             }
+        } catch (HibernateException e) {
+            e.printStackTrace();
         }
     }
 
@@ -59,6 +61,8 @@ public class UserDaoHibernateImpl implements UserDao<User> {
                 System.out.println("Ошибка добавления нового пользователя " + e);
                 session.getTransaction().rollback();
             }
+        } catch (HibernateException e) {
+            e.printStackTrace();
         }
     }
 
@@ -81,10 +85,12 @@ public class UserDaoHibernateImpl implements UserDao<User> {
 
     @Override
     public List<User> getAllUsers() {
-        final List<User> users;
+        List<User> users = null;
         try (Session session = Util.getSessionFactory().openSession()) {
             session.beginTransaction();
             users = session.createQuery("FROM User").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
         }
         return users;
     }
@@ -96,10 +102,13 @@ public class UserDaoHibernateImpl implements UserDao<User> {
                 session.beginTransaction();
                 session.createQuery("DELETE FROM User")
                         .executeUpdate();
+                session.getTransaction().commit();
             } catch (Exception e) {
                 System.out.println("Ошибка при очистке таблицы: " + e);
                 session.getTransaction().rollback();
             }
+        } catch (HibernateException e) {
+            e.printStackTrace();
         }
     }
 }

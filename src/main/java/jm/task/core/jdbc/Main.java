@@ -8,16 +8,16 @@ public class Main {
 
         userService.createUsersTable();
 
-//        userService.saveUser("Jack", "Sparrow", (byte)250);
-//        userService.saveUser("Bob", "Huston", (byte) 19);
-//        userService.saveUser("Smith", "Prank", (byte)60);
-//        userService.saveUser("Andrew", "Collins", (byte)35);
+        userService.saveUser("Bob", "Huston", (byte) 19);
+        userService.saveUser("Smith", "Prank", (byte)60);
+        userService.saveUser("Jack", "Sparrow", (byte)250);
+        userService.saveUser("Andrew", "Collins", (byte)35);
 
-//        userService.removeUserById(3);
+        userService.removeUserById(9);
 
-//        System.out.println(userService.getAllUsers());
+        System.out.println(userService.getAllUsers());
 
-//        userService.cleanUsersTable();
+        userService.cleanUsersTable();
 
         userService.dropUsersTable();
 

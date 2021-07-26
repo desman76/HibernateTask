@@ -17,7 +17,7 @@ public final class Util {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     private static final String URL = "jdbc:mysql://localhost:3306/jmpp";
-    private static final String DIALECT = "org.hibernate.dialect.MySQL8Dialect";
+    private static final String DIALECT = "org.hibernate.dialect.MySQLDialect";
     private static final String HBM2DDL = "none";
     private static final String SHOW_SQL = "true";
     private static final String FORMAT_SQL = "true";
